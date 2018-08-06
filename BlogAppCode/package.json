@@ -1,0 +1,20 @@
+{
+  "name": "blogappcode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Diogo Esteves",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-sanitizer": "^1.0.4",
+    "method-override": "^3.0.0",
+    "mongodb": "^3.1.1",
+    "mongoose": "^5.2.6"
+  }
+}
