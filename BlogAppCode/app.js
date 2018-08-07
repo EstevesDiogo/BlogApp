@@ -11,6 +11,7 @@ const
 //------------------------------------------------------------------------------------------
 
 mongoose.connect("mongodb://localhost/BlogApp",);
+
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -42,7 +43,7 @@ const Blog = mongoose.model("Blog", blogSchema);
 
 app.get("/", (req, res) => res.redirect("/blogs"));
 
-// *******  INDEX ROUT
+// *******  INDEX ROUT  *******
 
 app.get("/blogs", (req, res) => Blog.find({}, (err, blogs) => {
     if (err) {
@@ -51,11 +52,11 @@ app.get("/blogs", (req, res) => Blog.find({}, (err, blogs) => {
         res.render("index", {blogs: blogs});
     }
 }));
-// *******  NEW ROUT
+// *******  NEW ROUT  *******
 
 app.get("/blogs/new", (req, res) => res.render("new"));
 
-// *******  CREATE ROUT
+// *******  CREATE ROUT  *******
 
 app.post("/blogs", (req, res) => {
 
@@ -69,7 +70,7 @@ app.post("/blogs", (req, res) => {
     })
 });
 
-// *******  SHOW ROUT
+// *******  SHOW ROUT  *******
 
 app.get("/blogs/:id", (req, res) => Blog.findById(req.params.id, (err, foundBlog) => {
     if (err) {
@@ -79,7 +80,7 @@ app.get("/blogs/:id", (req, res) => Blog.findById(req.params.id, (err, foundBlog
     }
 }));
 
-// *******  EDIT ROUT
+// *******  EDIT ROUT  *******
 
 app.get("/blogs/:id/edit", (req, res) => Blog.findById(req.params.id, (err, foundBlog) => {
     if (err) {
@@ -89,7 +90,7 @@ app.get("/blogs/:id/edit", (req, res) => Blog.findById(req.params.id, (err, foun
     }
 }));
 
-// *******  UPDATE ROUT
+// *******  UPDATE ROUT  *******
 
 app.put("/blogs/:id", (req, res) => {
     req.body.blog.body = req.sanitize(req.body.blog.body);
@@ -102,7 +103,7 @@ app.put("/blogs/:id", (req, res) => {
     })
 });
 
-// *******  UPDATE ROUT
+// *******  DELETE ROUT  *******
 
 app.delete("/blogs/:id", (req, res) => Blog.findByIdAndRemove(req.params.id, (err) => {
     if (err) {
